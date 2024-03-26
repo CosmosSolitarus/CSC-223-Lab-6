@@ -1,7 +1,9 @@
 package input;
 
 import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,6 +14,7 @@ import input.builder.GeometryBuilder;
 import input.components.ComponentNode;
 import input.components.FigureNode;
 import input.components.point.PointNode;
+import input.components.point.PointNodeDatabase;
 import input.components.segment.SegmentNode;
 import input.parser.JSONParser;
 
@@ -36,7 +39,9 @@ public class InputFacade
 	 */
 	public static FigureNode extractFigure(String filepath)
 	{
-        // TODO
+        JSONParser parser = new JSONParser();
+
+		return (FigureNode) parser.parse(filepath);
 	}
 	
 	/**
@@ -47,12 +52,36 @@ public class InputFacade
 	 * @param fig -- a populated FigureNode object corresponding to a geometry figure
 	 * @return a point database and a set of segments
 	 */
-	public static Map.Entry<PointDatabaseTest, Set<Segment>> toGeometryRepresentation(FigureNode fig)
+	public static Map.Entry<PointDatabase, Set<Segment>> toGeometryRepresentation(FigureNode fig)
 	{
-		// TODO
+		return new AbstractMap.SimpleEntry<>(figToPointDatabase(fig), figToSegmentSet(fig));
 	}
 
-    //	
-	// TODO: implement other support methods to facilitate the toGeometryRepresentation method
-	//
+	private static PointDatabase figToPointDatabase(FigureNode fig) {
+		Set<PointNode> pns = fig.getPointsDatabase().getPoints();
+		List<Point> ps = new ArrayList<>();
+
+		for (PointNode pn : pns) {
+			ps.add(new Point(pn.getName(), pn.getX(), pn.getY()));
+		}
+
+		return new PointDatabase(ps);
+	}
+
+	private static Set<Segment> figToSegmentSet(FigureNode fig) {
+		List<SegmentNode> sns = fig.getSegments().asSegmentList();
+		Set<Segment> out = new LinkedHashSet<>();
+
+		for (SegmentNode sn : sns) {
+			PointNode pn0 = sn.getPoint1();
+			PointNode pn1 = sn.getPoint1();
+
+			Point p0 = new Point(pn0.getName(), pn0.getX(), pn0.getY());
+			Point p1 = new Point(pn1.getName(), pn1.getX(), pn1.getY());
+
+			out.add(new Segment(p0, p1));
+		}
+
+		return out;
+	}
 }
