@@ -58,7 +58,8 @@ public class PointDatabase
 	}
 	public String getName(Point pt)
 	{
-        return getPoint(pt)._name;
+        if (pt == null) return null;
+		return getPoint(pt)._name;
 	}
 
 	/**
