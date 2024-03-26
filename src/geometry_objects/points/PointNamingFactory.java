@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/*
+/**
  * Given a pair of coordinates; generate a unique name for it;
  * return that point object.
  *
  * Names go from A..Z..AA..ZZ..AAA...ZZZ  (a name such as ABA does not occur)
+ * 
+ * @author	Jack, Sage
+ * @date	3/26/24
  */
 public class PointNamingFactory
 {
@@ -66,7 +69,11 @@ public class PointNamingFactory
 	 */
 	public Point put(Point pt)
 	{
-		// TODO
+		if (pt._name == "__UNNAMED") {
+			return put(getCurrentName(), pt.getX(), pt.getY());
+		}
+
+		return put(pt.getName(), pt.getX(), pt.getY());
 	}
 
 	/**
@@ -81,7 +88,7 @@ public class PointNamingFactory
 	 */
 	public Point put(double x, double y)
 	{
-		// TODO
+		return put("__UNNAMED", x, y);
 	}
 
 	/**
@@ -104,7 +111,27 @@ public class PointNamingFactory
 	 */
 	public Point put(String name, double x, double y)
 	{
-		// TODO	
+		Point pt = new Point(name, x, y);
+		
+		// completely new point is added
+		if (!contains(pt)) {
+			_database.put(pt, pt);
+			return pt;
+		}
+
+		pt = _database.get(pt);
+		
+		String prevName = pt.getName();
+
+		// valid name overwrites unnamed name
+		if (pt._name.substring(0, 2).equals(_PREFIX)) {
+			_database.remove(pt);
+
+			pt._name = name;
+			_database.put(pt, pt);
+		}
+
+		return new Point(prevName, x, y);
 	}    
 
 	/**

@@ -12,7 +12,8 @@ import java.util.Set;
  * 
  * This is a Decorator class with the PointNamingFactory in the background
  * 
- * @author xxx
+ * @author	Jack
+ * @date	3/19/24
  */
 public class PointDatabase
 {

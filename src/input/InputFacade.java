@@ -15,6 +15,14 @@ import input.components.point.PointNode;
 import input.components.segment.SegmentNode;
 import input.parser.JSONParser;
 
+/**
+ * InputFacade implements the Facade design pattern. Purpose is to simplify interface to
+ * nodes and GeometryFigures.
+ * 
+ * @author	Jack, Sage
+ * @data	3/26/24
+ */
+
 public class InputFacade
 {
 	/**
