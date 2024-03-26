@@ -10,11 +10,8 @@ import java.util.Set;
 import geometry_objects.points.Point;
 import geometry_objects.points.PointDatabase;
 import geometry_objects.Segment;
-import input.builder.GeometryBuilder;
-import input.components.ComponentNode;
 import input.components.FigureNode;
 import input.components.point.PointNode;
-import input.components.point.PointNodeDatabase;
 import input.components.segment.SegmentNode;
 import input.parser.JSONParser;
 

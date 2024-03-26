@@ -8,7 +8,7 @@ import utilities.math.MathUtilities;
 
 public class PointTest {
     @Test
-    void getXTest() {
+    public void getXTest() {
         Point pt0 = new Point(3, 12.12);
         assertTrue(MathUtilities.doubleEquals(3, pt0.getX()));
 
@@ -19,7 +19,7 @@ public class PointTest {
     }
 
     @Test
-    void getYTest() {
+    public void getYTest() {
         Point pt0 = new Point(3, 12.12);
         assertTrue(MathUtilities.doubleEquals(12.12, pt0.getY()));
 
@@ -30,7 +30,7 @@ public class PointTest {
     }
 
     @Test
-    void getNameTest() {
+    public void getNameTest() {
         Point pt0 = new Point(3, 12.12);
         assertEquals("__UNNAMED", pt0.getName());
 
@@ -41,7 +41,7 @@ public class PointTest {
     }
 
     @Test
-    void isUnnamedTest() {
+    public void isUnnamedTest() {
         Point pt0 = new Point(3, 12.12);
         assertTrue(pt0.isUnnamed());
 
@@ -50,7 +50,7 @@ public class PointTest {
     }
 
     @Test
-    void hashCodeTest() {
+    public void hashCodeTest() {
         Point pt0 = new Point(3, 12.12);
         Point pt1 = new Point("Josh", 3, 12.12);
         Point pt2 = new Point("Tyler", 2, -4);
@@ -61,7 +61,7 @@ public class PointTest {
     }
 
     @Test
-    void LexicographicOrderingTest() {
+    public void LexicographicOrderingTest() {
         Point pt0 = new Point(3, 12.12);
         Point pt1 = new Point("Josh", 3, 12.12);
         Point pt2 = new Point("Tyler", 2, -4);
@@ -84,7 +84,7 @@ public class PointTest {
     }
 
     @Test
-    void equalsTest() {
+    public void equalsTest() {
 		// NAMING SCHEME
 		// u = unnamed
 		// n = named
@@ -149,7 +149,7 @@ public class PointTest {
 		
 		// named Point with integer and irrational
 		Point nzr = new Point("__UNNAMED", 9, Math.sqrt(3));
-		assertEquals(new Point("__UNNAMED", 9, 1.73205), nzr);
+		assertEquals(new Point("", 9, 1.73205), nzr);
 		
 		// named Point with decimals only
 		Point nqq = new Point("sdfsdf", -8.47, 0.001);
@@ -194,7 +194,7 @@ public class PointTest {
     }
 
     @Test
-    void toStringTest() {
+    public void toStringTest() {
 		// NAMING SCHEME
 		// u = unnamed
 		// n = named
@@ -259,7 +259,7 @@ public class PointTest {
 		
 		// named Point with integer and irrational
 		Point nzr = new Point("__UNNAMED", 9, Math.sqrt(3));
-		assertEquals("__UNNAMED(9, 1.73205)", nzr.toString());
+		assertEquals("(9, 1.73205)", nzr.toString());
 		
 		// named Point with decimals only
 		Point nqq = new Point("sdfsdf", -8.47, 0.001);

@@ -52,8 +52,8 @@ public class Point implements Comparable<Point>
 	public Point(String name, double x, double y)
 	{
 		_name = (name == null || name == "") ? ANONYMOUS : name;
-		this._x = x;
-		this._y = y;
+		_x = MathUtilities.removeLessEpsilon(x);
+		_y = MathUtilities.removeLessEpsilon(y);
 	}
 
 	/**
