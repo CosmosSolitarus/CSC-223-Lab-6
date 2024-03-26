@@ -1,7 +1,5 @@
 package input;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.AbstractMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -41,7 +39,7 @@ public class InputFacade
 	 * @param fig -- a populated FigureNode object corresponding to a geometry figure
 	 * @return a point database and a set of segments
 	 */
-	public static Map.Entry<PointDatabase, Set<Segment>> toGeometryRepresentation(FigureNode fig)
+	public static Map.Entry<PointDatabaseTest, Set<Segment>> toGeometryRepresentation(FigureNode fig)
 	{
 		// TODO
 	}
