@@ -54,6 +54,13 @@ public class InputFacade
 		return new AbstractMap.SimpleEntry<>(figToPointDatabase(fig), figToSegmentSet(fig));
 	}
 
+	/**
+	 * Helper method for toGeometryRepresentation(). Transfomrs 
+	 * PointNodeDatabase to PointDatabase.
+	 * 
+	 * @param fig	a populated FigureNode object corresponding to a geometry figure
+	 * @return		the PointDatabase
+	 */
 	private static PointDatabase figToPointDatabase(FigureNode fig) {
 		Set<PointNode> pns = fig.getPointsDatabase().getPoints();
 		List<Point> ps = new ArrayList<>();
@@ -65,6 +72,12 @@ public class InputFacade
 		return new PointDatabase(ps);
 	}
 
+	/**
+	 * Helper method for toGeometryRepresentation(). Transforms
+	 * SegmentNodeDatabase to SegmentDatabase.
+	 * @param fig	a populated FigureNode object corresponding to a geometry figure
+	 * @return		the SegmentDatabase
+	 */
 	private static Set<Segment> figToSegmentSet(FigureNode fig) {
 		List<SegmentNode> sns = fig.getSegments().asSegmentList();
 		Set<Segment> out = new LinkedHashSet<>();
